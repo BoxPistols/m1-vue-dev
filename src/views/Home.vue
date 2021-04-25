@@ -1,7 +1,8 @@
 <template>
     <div class="home">
         <img alt="Vue logo" src="../assets/logo.png" />
-        <Dev01 heroMessage="I'm Developer" like="14" />
+        <dev01 hero-message="I'm developer" :like="likeNumber" />
+        Like: <input type="number" v-model="likeNumber" />
     </div>
 </template>
 
@@ -10,6 +11,11 @@ import { Options, Vue } from 'vue-class-component'
 import Dev01 from '@/components/Dev01.vue'
 
 @Options({
+    data() {
+        return {
+            likeNumber: 50,
+        }
+    },
     components: {
         Dev01,
     },

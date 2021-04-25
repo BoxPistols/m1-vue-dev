@@ -1,8 +1,6 @@
 <template>
     <div>
-        <h2>{{ heroMessage }}</h2>
-        <p>Like: {{ like }}</p>
-        <p>halfNum: {{ halfNum }}</p>
+        <h3>{{ heroMessage }} / Like: {{ like }} / halfNum: {{ halfNum }}</h3>
     </div>
 </template>
 <script>
