@@ -1,9 +1,6 @@
 <template>
     <div>
-        <h1>Prop:dev01Msg = {{ dev01Msg }}</h1>
-        <h2>{{ inputMsg }}</h2>
-        <input type="text" v-model="inputMsg" />
-        <button @click="doAction">Click doAction</button>
+        <h2>{{ heroMessage }}</h2>
         <p>Like: {{ like }}</p>
         <p>halfNum: {{ halfNum }}</p>
     </div>
@@ -11,23 +8,22 @@
 <script>
 export default {
     props: {
-        dev01Msg: String,
-        like: Number,
+        heroMessage: String,
+        // like: Number,
+        like: {
+            type: Number,
+            // required: true,  *defaultかrequiedかどちらか単一選択
+            default: 0,
+        },
     },
     data() {
-        return {
-            inputMsg: 'Hi!',
-        }
+        return {}
     },
     computed: {
         halfNum() {
             return this.like / 2
         },
     },
-    methods: {
-        doAction() {
-            this.inputMsg = 'Oh!!'
-        },
-    },
+    methods: {},
 }
 </script>
