@@ -1,7 +1,7 @@
 <template>
     <div class="about">
         <div class="container">
-            <h1>WatchApp</h1>
+            <h1>WatchApp {{ tex }}</h1>
 
             <div class="row">
                 <div class="col">
@@ -30,6 +30,9 @@
 <script>
 /* eslint-disable */
 export default {
+    props: {
+        tex: String,
+    },
     data() {
         return {
             calcM: 0,
@@ -37,7 +40,6 @@ export default {
             calcCM: 0,
         }
     },
-
     watch: {
         calcKM(val) {
             // this.calcKM = val
@@ -60,10 +62,7 @@ export default {
 
 <style lang="scss" scoped>
 input[type='number'] {
-    font-size: 18px;
     display: block;
-    margin: auto;
-    padding: 4px 8px;
 }
 label {
     margin-top: 12px;

@@ -62,6 +62,7 @@ import LikeHeader from '@/components/LikeHeader.vue'
         Dev01,
         LikeHeader,
     },
+    watch: {},
 })
 export default class Home extends Vue {}
 </script>

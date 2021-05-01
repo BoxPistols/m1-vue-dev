@@ -2,7 +2,10 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <watch-app />
+                <watch-option tex="Option deep" />
+            </div>
+            <div class="col">
+                <watch-app tex="Calc" />
             </div>
             <div class="col">
                 <vue-basic-watch />
@@ -15,6 +18,7 @@
 /* eslint-disable */
 import VueBasicWatch from '@/vueBasic/Watch'
 import WatchApp from '@/vueBasic/WatchApp'
+import WatchOption from '@/vueBasic/WatchOption'
 
 export default {
     data() {
@@ -23,6 +27,7 @@ export default {
     components: {
         VueBasicWatch,
         WatchApp,
+        WatchOption,
     },
 }
 </script>
