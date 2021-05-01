@@ -1,5 +1,46 @@
 <template>
-    <div class="about">
-        <h1>This is an about page</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <watch-app />
+            </div>
+            <div class="col">
+                <vue-basic-watch />
+            </div>
+        </div>
     </div>
 </template>
+
+<script>
+/* eslint-disable */
+import VueBasicWatch from '@/vueBasic/Watch'
+import WatchApp from '@/vueBasic/WatchApp'
+
+export default {
+    data() {
+        return {}
+    },
+    components: {
+        VueBasicWatch,
+        WatchApp,
+    },
+}
+</script>
+
+<style lang="scss" scoped>
+.container {
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 1280px;
+        margin: auto;
+        .col {
+            min-width: 45%;
+            border: 2px solid purple;
+            padding-bottom: 5vh;
+            max-width: 1280px;
+            margin: 2vh auto;
+        }
+    }
+}
+</style>
