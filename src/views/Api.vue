@@ -6,15 +6,35 @@
                     <input type="text" v-model="keyword" />
                 </div>
                 <div>
-                    <!-- {{ message }} -->
+                    {{ message }}
                     <!-- {{ items }} -->
                 </div>
                 <div>
                     <ul>
                         <li v-for="(item, index) in items" :key="item.index">
                             <a :href="item.url" target="_blank">
-                                {{ index }} : <b>{{ item.title }}</b> / likes:
-                                {{ item.likes_count }}
+                                {{ index }} :
+                                <b>{{ item.title }}</b>
+                                <span
+                                    v-if="
+                                        item.likes_count > 1 &&
+                                        item.likes_count <= 100
+                                    "
+                                >
+                                    like: /
+                                    <b>{{ item.likes_count }}</b>
+                                </span>
+                                <span
+                                    v-else-if="item.likes_count >= 100"
+                                    class="text-many"
+                                >
+                                    like: /
+                                    <b>{{ item.likes_count }}</b>
+                                </span>
+
+                                <span v-else class="text-disable"
+                                    >/ not has likes...</span
+                                >
                             </a>
                         </li>
                     </ul>
@@ -27,7 +47,10 @@
 <script>
 /* eslint-disable */
 // import VueBasicWatch from '@/vueBasic/Watch'
+
 import axios from 'axios'
+import 'lodash'
+// const { retryx } = require('retryx')
 
 export default {
     data() {
@@ -39,28 +62,42 @@ export default {
     },
     watch: {
         keyword(newVal, oldVal) {
-            console.log(newVal)
+            // console.log(newVal)
             // TODO: Lodashで必要な時だけ読み込む
+            this.message = 'Wait typing...'
+            this.debouncedGetAnswer()
         },
     },
     created() {
-        this.keyword = 'UI'
-        this.getAnswer()
+        // this.keyword = 'UI'
+        // this.getAnswer()
+        this.debouncedGetAnswer = _.debounce(this.getAnswer, 2000)
     },
+
     methods: {
         getAnswer() {
+            // 空文字対応
             if (this.keyword === '') {
                 retturn
                 this.items = null
             }
             this.message = 'Loading...'
+            // thisの代入
             const vm = this
-            const params = { page: 1, per_page: 20, query: this.keyword }
+            // コンテンツ読み込みパラメーター
+            const params = { page: 1, per_page: 25, query: this.keyword }
+            // TODO: Retry filter
             axios
                 .get('https://qiita.com/api/v2/items', { params })
                 .then(function (res) {
-                    console.log(res)
                     vm.items = res.data
+                    console.log(vm.items)
+                    // FIXME!
+                    // if (res.data.likes_count < 1) {
+                    //     return (vm.message = '少ない...')
+                    // } else {
+                    //     return (vm.message = 'ある...')
+                    // }
                 })
                 .catch(function (error) {
                     vm.message = 'Error!' + error
@@ -69,8 +106,8 @@ export default {
                     vm.message = ''
                 })
         },
+        components: {},
     },
-    components: {},
 }
 </script>
 
@@ -90,6 +127,16 @@ export default {
             li {
                 text-align: left;
                 padding: 0 2em;
+                a {
+                    color: #345;
+                }
+                .text-disable {
+                    color: #999;
+                }
+                .text-many {
+                    color: teal;
+                    font-weight: 600;
+                }
             }
         }
     }
