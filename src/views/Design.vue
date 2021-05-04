@@ -1,5 +1,9 @@
 <template lang="">
     <div class="design">
+        <!-- <h1>Event</h1> -->
+        <event />
+        <hr />
+
         <h1>Design on Vue</h1>
         <class-style title="ClassStyle" />
     </div>
@@ -8,6 +12,7 @@
 <script>
 /* eslint-disable */
 import ClassStyle from '@/vueBasic/ClassStyle.vue'
+import Event from '@/vueBasic/Event.vue'
 
 export default {
     name: 'Design',
@@ -16,6 +21,7 @@ export default {
     },
     components: {
         ClassStyle,
+        Event,
     },
 }
 </script>
