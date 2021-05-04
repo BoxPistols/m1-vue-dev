@@ -5,6 +5,8 @@
                 <div class="col">
                     <h1>Event</h1>
                 </div>
+
+                <!-- Show Event Object -->
                 <div class="col">
                     <h2>Show Event Object</h2>
                     <p>msg: {{ msg }}</p>
@@ -13,12 +15,27 @@
                         handleEvent
                     </button>
                 </div>
+
+                <!--  Event Qualifier -->
                 <div class="col">
                     <h2>Event Qualifier / once</h2>
                     <p>nowTime: {{ nowTime }}</p>
                     <button class="event" @click.once="handleTime">
                         handleTime
                     </button>
+                </div>
+
+                <!--  Event Key -->
+                <div class="col">
+                    <h2>Event Key</h2>
+                    keyup="handleKey"
+                    <input
+                        type="text"
+                        v-on:keyup.esc.up.space="handleKey"
+                        v-model="eventKey"
+                        placeholder="input..."
+                    />
+                    <p>eventKey: {{ eventKey }}</p>
                 </div>
             </div>
         </div>
@@ -34,6 +51,7 @@ export default {
             msg: 'Message...',
             eventResult: 'event.target...',
             nowTime: 'nowTime...',
+            eventKey: '',
         }
     },
     methods: {
@@ -49,6 +67,9 @@ export default {
         },
         handleTime() {
             this.nowTime = new Date().toLocaleTimeString()
+        },
+        handleKey() {
+            this.eventKey = ''
         },
     },
     computed: {},
