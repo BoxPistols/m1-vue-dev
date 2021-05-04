@@ -13,6 +13,13 @@
                         handleEvent
                     </button>
                 </div>
+                <div class="col">
+                    <h2>Event Qualifier / once</h2>
+                    <p>nowTime: {{ nowTime }}</p>
+                    <button class="event" @click.once="handleTime">
+                        handleTime
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -26,6 +33,7 @@ export default {
         return {
             msg: 'Message...',
             eventResult: 'event.target...',
+            nowTime: 'nowTime...',
         }
     },
     methods: {
@@ -38,6 +46,9 @@ export default {
                 )`
             this.eventResult = res
             this.msg = 'HEKEKE!'
+        },
+        handleTime() {
+            this.nowTime = new Date().toLocaleTimeString()
         },
     },
     computed: {},
