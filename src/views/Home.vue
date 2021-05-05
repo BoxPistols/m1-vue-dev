@@ -1,6 +1,7 @@
 <!-- 親コンポーネント -->
 <!-- Example http://jsfiddle.net/StyleEye/tvsL71k2/4/ -->
 <template>
+    /* eslint-disable */
     <div class="home">
         <img alt="Vue logo" src="../assets/logo.png" />
         <!-- from LikeHeader  -->

@@ -144,6 +144,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 export default {
     name: 'Form',
     components: {},
@@ -159,7 +160,6 @@ export default {
     },
     computed: {},
     methods: {},
-    computed: {},
 }
 </script>
 
