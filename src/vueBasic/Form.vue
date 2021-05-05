@@ -5,6 +5,7 @@
                 <div class="col">
                     <h1>Form</h1>
                 </div>
+                <!-- TextArea  -->
                 <div class="col">
                     <h2>TextArea</h2>
                     <pre>msg: {{ msg }}</pre>
@@ -17,6 +18,9 @@
                         v-model="msg"
                     ></textarea>
                 </div>
+                <!-- /TextArea  -->
+
+                <!-- CheckBox/-->
                 <div class="col">
                     <h2>CheckBox</h2>
 
@@ -65,6 +69,54 @@
                         />
                     </div>
                 </div>
+                <!-- /CheckBox-->
+
+                <!-- Radio -->
+                <div class="col">
+                    <h2>Radio Button</h2>
+                    <pre>checkedRadio: {{ checkedRadio }}</pre>
+                    <div class="fx m-auto">
+                        <p>
+                            <label for="r1">Radio1:</label>
+                            <input
+                                type="radio"
+                                id="r1"
+                                value="r1"
+                                v-model="checkedRadio"
+                            />
+                        </p>
+                        <p>
+                            <label for="r2">Radio2:</label>
+                            <input
+                                type="radio"
+                                id="r2"
+                                value="r2"
+                                v-model="checkedRadio"
+                            />
+                        </p>
+                    </div>
+                </div>
+                <!-- /Radio -->
+
+                <!-- Select -->
+                <div class="col">
+                    <h2>Select</h2>
+                    <pre>vSelected: {{ vSelected }}</pre>
+                    <select
+                        name="s1"
+                        id="selected"
+                        v-model="vSelected"
+                        multiple
+                    >
+                        <option disable selected value=""
+                            >選択してください</option
+                        >
+                        <option value="s1">s1</option>
+                        <option value="s2">s2</option>
+                        <option value="s3">s3</option>
+                    </select>
+                </div>
+                <!-- /Select -->
             </div>
         </div>
     </div>
@@ -79,6 +131,8 @@ export default {
             msg: '',
             checked: false,
             colors: [],
+            checkedRadio: [],
+            vSelected: [],
         }
     },
     methods: {},
