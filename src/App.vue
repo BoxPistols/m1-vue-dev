@@ -3,7 +3,8 @@
         <router-link to="/">Home</router-link> |
         <router-link to="/about">About</router-link> |
         <router-link to="/api">Api</router-link> |
-        <router-link to="/design">Design</router-link>
+        <router-link to="/design">Design</router-link> |
+        <router-link to="/event">Event/Form</router-link>
     </div>
     <router-view />
 </template>
