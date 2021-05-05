@@ -108,15 +108,36 @@
                         v-model="vSelected"
                         multiple
                     >
-                        <option disable selected value=""
-                            >選択してください</option
-                        >
+                        <option disable selected>選択してください</option>
                         <option value="s1">s1</option>
                         <option value="s2">s2</option>
                         <option value="s3">s3</option>
                     </select>
                 </div>
                 <!-- /Select -->
+
+                <!-- Lazy -->
+                <div class="col">
+                    <h2>Lazy</h2>
+                    <p>lazy msg: {{ msg }}</p>
+                    <input type="text" v-model.lazy="msg" />
+                    <pre>{{ $data.msg }}</pre>
+
+                    <h2>trim</h2>
+                    <p>trim msg: {{ msg }}</p>
+                    <input type="text" v-model.trim="msg" />
+                    <pre>{{ $data.msg }}</pre>
+
+                    <h2>number</h2>
+                    <p>number : {{ age }}</p>
+                    <input
+                        type="number"
+                        v-model.number="age"
+                        @change="numAge"
+                    />
+                    <pre>{{ $data.age }}</pre>
+                </div>
+                <!-- /Lazy -->
             </div>
         </div>
     </div>
@@ -133,8 +154,10 @@ export default {
             colors: [],
             checkedRadio: [],
             vSelected: [],
+            age: 15,
         }
     },
+    computed: {},
     methods: {},
     computed: {},
 }
