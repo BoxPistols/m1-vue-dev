@@ -16,3 +16,16 @@ ul {
     padding: 0;
     list-style: none;
 }
+
+.fx {
+    display: flex;
+    width: min-content;
+}
+@mixin fx {
+    display: flex;
+    width: min-content;
+}
+
+.m-auto {
+    margin: auto;
+}

@@ -4,13 +4,17 @@
             <div class="row">
                 <div class="col">
                     <h1>Event</h1>
+                    <pre>Data: {{ $data }}</pre>
                 </div>
 
                 <!-- Show Event Object -->
                 <div class="col">
                     <h2>Show Event Object</h2>
                     <p>msg: {{ msg }}</p>
-                    <p>eventResult: {{ eventResult }}</p>
+                    <div>
+                        eventResult:
+                        <pre>{{ eventResult }}</pre>
+                    </div>
                     <button class="event" @click="handleEvent">
                         handleEvent
                     </button>
@@ -65,11 +69,11 @@ export default {
     methods: {
         handleEvent() {
             // this.eventResult = event.target.tagName
-            const res = `(
+            const res = `
                 tagName: ${event.target.tagName}
                 outerHTML: ${event.target.outerHTML}
                 type: ${event.target.type}
-                )`
+                `
             this.eventResult = res
             this.msg = 'HEKEKE!'
         },
@@ -108,6 +112,16 @@ export default {
     }
     p {
         font-size: 20px;
+    }
+    pre {
+        background: aliceblue;
+        font-size: 15px;
+        line-height: 2;
+        text-align: left;
+        max-width: 960px;
+        margin: auto;
+        white-space: break-spaces;
+        padding: 24px 32px;
     }
 }
 </style>
