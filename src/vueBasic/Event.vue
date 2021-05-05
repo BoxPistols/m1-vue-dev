@@ -28,14 +28,21 @@
                 <!--  Event Key -->
                 <div class="col">
                     <h2>Event Key</h2>
-                    keyup="handleKey"
+                    <p>keyNum: {{ keyNum }}</p>
+                    <!-- v-on:keyup.esc.up="handleKey" -->
                     <input
                         type="text"
-                        v-on:keyup.esc.up.space="handleKey"
+                        v-on:keyup.ctrl.c="handleKey"
+                        v-on:keyup.ctrl.down="handleEvent"
                         v-model="eventKey"
                         placeholder="input..."
                     />
                     <p>eventKey: {{ eventKey }}</p>
+                </div>
+
+                <div class="col">
+                    <h3>clickShifting</h3>
+                    <button @click.shift="clickShifting">clickShifting</button>
                 </div>
             </div>
         </div>
@@ -52,6 +59,7 @@ export default {
             eventResult: 'event.target...',
             nowTime: 'nowTime...',
             eventKey: '',
+            keyNum: 'Key',
         }
     },
     methods: {
@@ -68,9 +76,25 @@ export default {
         handleTime() {
             this.nowTime = new Date().toLocaleTimeString()
         },
-        handleKey() {
+        handleKey(e) {
             this.eventKey = ''
+            this.keyNum = e.keyCode
         },
+        clickShifting() {
+            alert(' clickShifting')
+        },
+        keyAction(e) {
+            //キーコードの表示
+            this.keyNum = e.keyCode
+        },
+        // created() {
+        //     //キーコードによる動作の登録
+        //     window.addEventListener('keydown', this.keyAction)
+        // },
+        // beforeDestroy() {
+        //     //キーコードによる動作の削除
+        //     window.removeEventListener('keydown', this.keyAction)
+        // },
     },
     computed: {},
 }
