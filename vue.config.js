@@ -3,4 +3,5 @@ module.exports = {
     devServer: {
         host: 'localhost',
     },
+    outputDir: 'public',
 }

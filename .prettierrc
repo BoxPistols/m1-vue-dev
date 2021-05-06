@@ -13,5 +13,6 @@
     "requirePragma": false,
     "insertPragma": false,
     "proseWrap": "preserve",
-    "vueIndentScriptAndStyle": false
+    "vueIndentScriptAndStyle": false,
+    "prettier.arrowParens": false
 }
