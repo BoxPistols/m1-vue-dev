@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+        <h2>About</h2>
         <div class="row">
             <div class="col">
                 <watch-option tex="Option deep" />

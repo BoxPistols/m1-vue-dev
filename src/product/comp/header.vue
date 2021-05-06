@@ -1,11 +1,10 @@
 <template>
-    <div class="home">
+    <div class="comp">
         <div class="contaier">
             <div class="row">
                 <div class="col">
-                    <h2>Home</h2>
+                    <h1>Comp</h1>
                 </div>
-
                 <div class="col">
                     <h2>Contents</h2>
                     <p>Lorem ipsum dolor sit</p>
