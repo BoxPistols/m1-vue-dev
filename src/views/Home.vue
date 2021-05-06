@@ -8,7 +8,7 @@
 
                 <main>
                     <div class="list">
-                        <li
+                        <!-- <li
                             v-for="whisper in orderBy(whispers, 'date', -1)"
                             :key="whisper.id"
                             class="item"
@@ -23,7 +23,13 @@
                                 <p class="user-name">{{ whisper.uid }}</p>
                             </div>
                             <div class="content" v-html="whisper.content"></div>
-                        </li>
+                        </li> -->
+                        <Item
+                            v-for="whisper in orderBy(whispers, 'date', -1)"
+                            :key="whisper.id"
+                            :id="whisper.id"
+                            :uid="whisper.uid"
+                        />
                     </div>
                 </main>
 
@@ -44,6 +50,8 @@
 import Header from '@/product/comp/header.vue'
 import { db } from '../main'
 import Vue2Filters from 'vue2-filters'
+
+import Item from '@/product/comp/Item.vue'
 
 export default {
     name: 'Home',
@@ -66,6 +74,7 @@ export default {
     },
     components: {
         Header,
+        Item,
     },
     mixins: [Vue2Filters.mixin],
 }
