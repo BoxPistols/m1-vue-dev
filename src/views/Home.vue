@@ -4,6 +4,7 @@
             <div class="row">
                 <div class="col">
                     <h2>Home</h2>
+                    <Header />
                 </div>
 
                 <div class="col">
@@ -20,8 +21,9 @@
 
 <script>
 /* eslint-disable */
+import Header from '@/product/comp/header.vue'
 export default {
-    name: 'Comp',
+    name: 'Home',
     components: {},
     data() {
         return {
@@ -33,7 +35,9 @@ export default {
             alert(x)
         },
     },
-    computed: {},
+    components: {
+        Header,
+    },
 }
 </script>
 
