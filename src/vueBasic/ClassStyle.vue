@@ -6,7 +6,7 @@
                 'toggle-text',
                 { 'is-active': isActive, 'has-error': hasError },
             ]"
-            @click="toggle"
+                @click="toggle"
         >
             {{ title }}
         </h2>
