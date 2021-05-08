@@ -16,6 +16,7 @@
         </div>
 
         <div class="list">
+            <Editor :currentUser="currentUser" />
             <Item
                 v-for="whisper in orderBy(myWhispers, 'date', -1)"
                 :key="whisper.id"
@@ -28,19 +29,24 @@
 
 <script>
 import { db } from '../main'
+import { auth } from '../main'
 import firebase from 'firebase'
-import Item from '@/product/comp/Item'
 import Vue2Filters from 'vue2-filters'
+import Item from '@/product/comp/Item'
+
+import Editor from '@/product/comp/Editor'
 
 export default {
     data() {
         return {
             user: {},
             myWhispers: [],
+            currentUser: {},
         }
     },
     components: {
         Item,
+        Editor,
     },
     firestore() {
         return {
@@ -50,7 +56,12 @@ export default {
                 .where('uid', '==', this.$route.params.uid),
         }
     },
-    mixins: [Vue2Filters.mixin], // ここを追加
+    created() {
+        auth.onAuthStateChanged((user) => {
+            this.currentUser = user
+        })
+    },
+    mixins: [Vue2Filters.mixin],
 }
 </script>
 
@@ -80,6 +91,38 @@ export default {
                 font-size: 0.8rem;
                 margin: 0;
             }
+        }
+    }
+    .editor {
+        position: relative;
+        width: 100%;
+
+        textarea {
+            // background: transparent;
+            resize: none;
+            height: 80px;
+            width: 96%;
+            // border: none;
+            padding: 10px 2%;
+            font-size: 0.9rem;
+            font-weight: lighter;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        .message {
+            opacity: 0;
+            position: absolute;
+            bottom: 5px;
+            right: 10px;
+            transition: 0.2s;
+            font-size: 0.8rem;
+        }
+
+        &:hover .message {
+            opacity: 1;
         }
     }
 </style>
