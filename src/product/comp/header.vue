@@ -4,22 +4,27 @@
         <router-link to="/">
             <h1>whisp.</h1>
         </router-link>
-        <!-- <div class="btns">
-        <button @click="signIn">
-            <fa icon="user" />
-        </button>
-    </div> -->
         <div v-if="currentUser" class="btns">
-            <button
-                class="ava"
-                :style="'background-image: url(' + currentUser.photoURL + ')'"
-            ></button>
-            <button @click="signOut">
-                <fa icon="sign-out-alt" /> sign-out
+            <router-link :to="'/user/' + currentUser.uid">
+                <!-- ここを追加 -->
+
+                <button
+                    class="ava"
+                    :style="
+                        'background-image: url(' + currentUser.photoURL + ')'
+                    "
+                ></button>
+            </router-link>
+            <!-- ここを追加 -->
+
+            <button>
+                <fa icon="sign-out-alt" @click="signOut" />
             </button>
         </div>
         <div v-else class="btns">
-            <button @click="signIn"><fa icon="user" />sign-in</button>
+            <button>
+                <fa icon="user" @click="signIn" />
+            </button>
         </div>
     </header>
 </template>
@@ -44,6 +49,7 @@ export default {
         signIn() {
             const provider = new firebase.auth.GoogleAuthProvider()
             auth.signInWithPopup(provider).then((result) => {
+                this.$router.push('/user/' + result.user.uid)
                 alert('Hello, ' + result.user.displayName + '!')
                 this.createUser(result.user)
             })
