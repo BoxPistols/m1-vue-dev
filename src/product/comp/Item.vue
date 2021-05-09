@@ -1,7 +1,7 @@
 <!-- Item.vue -->
 <template>
     <li class="item">
-        <div class="user-box">
+        <div class="user-box" v-if="user">
             <div
                 class="avatar"
                 :style="'background-image: url(' + user.photoURL + ')'"
@@ -41,11 +41,12 @@ export default {
     props: ['id', 'uid'],
     data() {
         return {
-            whisper: {},
-            user: {},
-            currentUser: {},
+            whisper: null,
+            user: null,
+            currentUser: null,
             showBtns: false,
             editing: false,
+            content: '',
         }
     },
     methods: {

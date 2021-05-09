@@ -5,26 +5,9 @@
                 <div class="col">
                     <Header />
                 </div>
-
                 <main>
                     <div v-if="currentUser" class="btns">
                         <div class="list">
-                            <!-- <li
-                            v-for="whisper in orderBy(whispers, 'date', -1)"
-                            :key="whisper.id"
-                            class="item"
-                        >
-                            <div class="user-box">
-                                <div
-                                    class="avatar"
-                                    :style="
-                                        'background-image: url(' + url + ')'
-                                    "
-                                ></div>
-                                <p class="user-name">{{ whisper.uid }}</p>
-                            </div>
-                            <div class="content" v-html="whisper.content"></div>
-                        </li> -->
                             <Item
                                 v-for="whisper in orderBy(whispers, 'date', -1)"
                                 :key="whisper.id"
@@ -34,14 +17,6 @@
                         </div>
                     </div>
                 </main>
-
-                <div class="col">
-                    <h2>Contents</h2>
-                    <p>Lorem ipsum dolor sit</p>
-                    <div class="event" @click="handleEvent('event-on!')">
-                        handleEvent
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -62,7 +37,7 @@ export default {
         return {
             mrg: 'message...',
             whispers: [],
-            currentUser: {},
+            currentUser: null,
         }
     },
     firestore() {
@@ -70,11 +45,7 @@ export default {
             whispers: db.collection('whispers'),
         }
     },
-    methods: {
-        handleEvent(x) {
-            alert(x)
-        },
-    },
+    methods: {},
     components: {
         Header,
         Item,
