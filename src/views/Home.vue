@@ -7,8 +7,9 @@
                 </div>
 
                 <main>
-                    <div class="list">
-                        <!-- <li
+                    <div v-if="currentUser" class="btns">
+                        <div class="list">
+                            <!-- <li
                             v-for="whisper in orderBy(whispers, 'date', -1)"
                             :key="whisper.id"
                             class="item"
@@ -24,12 +25,13 @@
                             </div>
                             <div class="content" v-html="whisper.content"></div>
                         </li> -->
-                        <Item
-                            v-for="whisper in orderBy(whispers, 'date', -1)"
-                            :key="whisper.id"
-                            :id="whisper.id"
-                            :uid="whisper.uid"
-                        />
+                            <Item
+                                v-for="whisper in orderBy(whispers, 'date', -1)"
+                                :key="whisper.id"
+                                :id="whisper.id"
+                                :uid="whisper.uid"
+                            />
+                        </div>
                     </div>
                 </main>
 
@@ -60,6 +62,7 @@ export default {
         return {
             mrg: 'message...',
             whispers: [],
+            currentUser: {},
         }
     },
     firestore() {

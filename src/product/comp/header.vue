@@ -1,13 +1,11 @@
 <!-- Header.vue -->
 <template>
     <header>
-        <router-link to="/">
-            <h1>whisp.</h1>
-        </router-link>
+        <!-- <router-link to="/">
+            <h1>Home</h1>
+        </router-link> -->
         <div v-if="currentUser" class="btns">
             <router-link :to="'/user/' + currentUser.uid">
-                <!-- ここを追加 -->
-
                 <button
                     class="ava"
                     :style="
@@ -15,8 +13,6 @@
                     "
                 ></button>
             </router-link>
-            <!-- ここを追加 -->
-
             <button>
                 <fa icon="sign-out-alt" @click="signOut" />
             </button>
