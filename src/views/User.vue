@@ -66,11 +66,18 @@ export default {
 </script>
 
 <style lang="scss">
+    .list li.item {
+        list-style: none;
+        max-width: 800px;
+        margin: auto;
+    }
+
     .user-title {
         display: flex;
         flex-wrap: nowrap;
-        justify-content: flex-start;
-        margin: 10px 0;
+        justify-content: flex-end;
+        margin: 10px auto;
+        max-width: 960px;
 
         .avatar {
             width: 50px;
@@ -96,13 +103,14 @@ export default {
     .editor {
         position: relative;
         width: 100%;
+        margin-bottom: 24px;
 
         textarea {
-            // background: transparent;
+            background: transparent;
             resize: none;
             height: 80px;
             width: 96%;
-            // border: none;
+            border-color: #ccc;
             padding: 10px 2%;
             font-size: 0.9rem;
             font-weight: lighter;

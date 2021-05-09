@@ -63,11 +63,14 @@ export default {
             }
 
             .user-name {
-                margin: 5px 0 0 0;
+                margin: 0;
                 text-align: center;
-                font-size: 0.7rem;
-                line-height: 0.7rem;
+                font-size: 25px;
+                line-height: 50px;
                 width: 50px;
+                font-weight: 900;
+                color: rgb(255 255 255);
+                opacity: 0.7;
             }
         }
 
@@ -75,6 +78,4 @@ export default {
             padding: 10px;
         }
     }
-
-
 </style>
