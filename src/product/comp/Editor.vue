@@ -1,5 +1,3 @@
-<!-- Editor.vue -->
-
 <template>
     <li class="item">
         <div class="user-box">
@@ -15,16 +13,12 @@
                 v-model="newWhisper"
                 @keypress.shift.enter="createWhisper"
             >
- <!-- 'v-model','@keypress.enter'を追加 -->
-
-      </textarea
-            >
+             <!-- 'v-model','@keypress.enter'を追加 -->
+            </textarea>
             <p class="message">Press Shift + Enter to Whisper</p>
         </div>
     </li>
 </template>
-
-<!-- Editor.vue -->
 
 <script>
 import { db } from '@/main'

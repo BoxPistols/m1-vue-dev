@@ -10,11 +10,20 @@
             </div>
             <div class="content" v-html="whisper.content"></div>
         </div>
+        <button
+            v-if="currentUser && currentUser.uid == user.id"
+            @click="showBtns = !showBtns"
+        >
+            <fa icon="ellipsis-v" />
+        </button>
+        <div v-if="showBtns" class="controls">
+            <li @click="deleteWhisper" style="color: red">delete</li>
+        </div>
     </li>
 </template>
 
 <script>
-import { db } from '@/main'
+import { db, auth } from '@/main'
 
 export default {
     props: ['id', 'uid'],
@@ -22,13 +31,27 @@ export default {
         return {
             whisper: {},
             user: {},
+            currentUser: {},
+            showBtns: false,
         }
+    },
+    methods: {
+        deleteWhisper() {
+            if (window.confirm('Are You Sure to Delete This Whisper?')) {
+                db.collection('whispers').doc(this.$props.id).delete()
+            }
+        },
     },
     firestore() {
         return {
             whisper: db.collection('whispers').doc(this.$props.id),
             user: db.collection('users').doc(this.$props.uid),
         }
+    },
+    created() {
+        auth.onAuthStateChanged((user) => {
+            this.currentUser = user
+        })
     },
 }
 </script>
@@ -76,6 +99,51 @@ export default {
 
         .content {
             padding: 10px;
+        }
+    }
+
+    button {
+        position: absolute;
+        top: 5px;
+        right: 0;
+        background: transparent;
+        color: #555;
+        font-size: 0.9rem;
+        opacity: 0;
+        transition: 0.2s;
+    }
+
+    .controls {
+        background: #fff;
+        position: absolute;
+        top: 5px;
+        right: 35px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+        border-radius: 3px;
+        opacity: 0;
+
+        li {
+            padding: 5px 20px;
+            border-top: 1px solid #eee;
+            cursor: pointer;
+
+            &:first-child {
+                border: none;
+            }
+        }
+    }
+
+    :first-child {
+        border: none;
+    }
+
+    :hover {
+        background: rgba(0, 0, 0, 0.02);
+
+        .content,
+        button,
+        .controls {
+            opacity: 1;
         }
     }
 </style>
