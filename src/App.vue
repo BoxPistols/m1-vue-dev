@@ -1,8 +1,9 @@
 <template>
     <div id="nav">
         <router-link to="/">Home</router-link> |
+        <router-link to="/FireBase">FireBase</router-link> |
         <router-link to="/about">About</router-link> |
-        <router-link to="/api">Api</router-link> |
+        <router-link to="/api">Qiita Search</router-link> |
         <router-link to="/design">Design</router-link> |
         <router-link to="/event">Event/Form</router-link>
     </div>
@@ -10,26 +11,26 @@
 </template>
 
 <style lang="scss">
-@import url('./style.scss');
+    @import url('./style.scss');
 
-#app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-}
-
-#nav {
-    padding: 30px;
-
-    a {
-        font-weight: bold;
+    #app {
+        font-family: Avenir, Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-align: center;
         color: #2c3e50;
+    }
 
-        &.router-link-exact-active {
-            color: #42b983;
+    #nav {
+        padding: 30px;
+
+        a {
+            font-weight: bold;
+            color: #2c3e50;
+
+            &.router-link-exact-active {
+                color: #42b983;
+            }
         }
     }
-}
 </style>

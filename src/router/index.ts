@@ -40,6 +40,12 @@ const routes: Array<RouteRecordRaw> = [
         component: () =>
             import(/* webpackChunkName: "api" */ '../views/Event.vue'),
     },
+    {
+        path: '/firebase',
+        name: 'FireBase',
+        component: () =>
+            import(/* webpackChunkName: "api" */ '../views/FireBase.vue'),
+    },
 ]
 
 const router = createRouter({

@@ -2,7 +2,8 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <div style="margin-top: 24px;">
+                <h1>Qiita Search</h1>
+                <div style="margin-top: 24px">
                     <input type="text" v-model="keyword" />
                 </div>
                 <div>
@@ -125,42 +126,42 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
-    .row {
-        display: flex;
-        flex-wrap: wrap;
-        max-width: 1280px;
-        margin: auto;
-        .col {
-            min-width: 45%;
-            border: 2px solid purple;
-            padding-bottom: 5vh;
+    .container {
+        .row {
+            display: flex;
+            flex-wrap: wrap;
             max-width: 1280px;
-            margin: 2vh auto;
-            li {
-                text-align: left;
-                padding: 0 2em;
-                a {
-                    color: #345;
-                    &.minor {
-                        color: #ccc;
+            margin: auto;
+            .col {
+                min-width: 45%;
+                border: 2px solid purple;
+                padding-bottom: 5vh;
+                max-width: 1280px;
+                margin: 2vh auto;
+                li {
+                    text-align: left;
+                    padding: 0 2em;
+                    a {
+                        color: #345;
+                        &.minor {
+                            color: #ccc;
+                        }
                     }
-                }
-                .text-disable {
-                    color: #999;
-                }
-                .text-many {
-                    color: teal;
-                    font-weight: 600;
-                    font-size: 24px;
-                }
-                .text-buzz {
-                    color: tomato;
-                    font-weight: 600;
-                    font-size: 32px;
+                    .text-disable {
+                        color: #999;
+                    }
+                    .text-many {
+                        color: teal;
+                        font-weight: 600;
+                        font-size: 24px;
+                    }
+                    .text-buzz {
+                        color: tomato;
+                        font-weight: 600;
+                        font-size: 32px;
+                    }
                 }
             }
         }
     }
-}
 </style>
