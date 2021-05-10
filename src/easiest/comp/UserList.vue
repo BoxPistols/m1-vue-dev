@@ -2,7 +2,7 @@
     <div class="UserList">
         <div class="contaier">
             <div class="row">
-                <div class="col">
+                <div class="col text-left">
                     <router-link to="/Easiest">Easiest Top</router-link>
                     <h2>{{ title }}</h2>
                     <p>Lorem ipsum dolor sit</p>
@@ -11,16 +11,15 @@
 
                     <!-- <button class="btn btn-primary mb-3" @click="over40">over40</button> -->
 
-                    <h2>{{ sort_key }}</h2>
-
+                    <p class="text-center">{{ sort_key }}: {{ sort_asc ? '昇順' : '降順'}}</p>
                     <table class="table">
                         <thead class="thead-dark">
                             <tr>
-                                <th @click="sortBy('id')">ID</th>
-                                <th @click="sortBy('name')">名前</th>
-                                <th @click="sortBy('age')">年齢</th>
-                                <th @click="sortBy('sex')">性別</th>
-                                <th @click="sortBy('pref')">都道府県</th>
+                                <th @click="sortBy('id')" :class="addClass('id')">ID</th>
+                                <th @click="sortBy('name')" :class="addClass('name')">名前</th>
+                                <th @click="sortBy('age')" :class="addClass('age')">年齢</th>
+                                <th @click="sortBy('sex')" :class="addClass('sex')">性別</th>
+                                <th @click="sortBy('pref')" :class="addClass('pref')">都道府県</th>
                             </tr>
                         </thead>
                         <tr v-for="customer in sort_customers" :key="customer.id">
@@ -75,20 +74,20 @@ export default {
         return {
             customers: customers,
             // for Table Sort
-            sort_key: '',
+            sort_key: 'sort_key',
             sort_asc: true,
         }
     },
     methods: {
         handleEvent() {
-            const repList = {
-                id: 1,
-                name: '吉田くん',
-                age: 666,
-                sex: 'メン',
-                pref: 'ロシア',
-            }
-            this.customers[0] = repList
+            // const repList = {
+            //     id: 1,
+            //     name: '吉田くん',
+            //     age: 666,
+            //     sex: 'メン',
+            //     pref: 'ロシア',
+            // }
+            // this.customers[0] = repList
             //  Dont move ↓
             // Vue.set(this.customers, 0, { repList })
         },
@@ -97,6 +96,12 @@ export default {
                 ? (this.sort_asc = !this.sort_asc)
                 : (this.sort_asc = true)
             this.sort_key = key
+        },
+        addClass(key) {
+            return {
+                asc: this.sort_key === key && this.sort_asc,
+                desc: this.sort_key === key && !this.sort_asc,
+            }
         },
         // TODO: dont move = not reactive(bind)
         // over40() {
@@ -134,9 +139,28 @@ export default {
 <style lang="scss" scoped>
     .contaier {
         width: auto;
+        max-width: 840px;
+        margin: auto;
         table.table {
             max-width: 840px;
             margin: auto;
+            th {
+                transition: 0.3s;
+                &:hover {
+                    cursor: pointer;
+                    opacity: 0.8;
+                }
+            }
         }
+    }
+    .asc::after,
+    .desc::after {
+        padding: 0 0 0 4px;
+    }
+    .asc::after {
+        content: '↓';
+    }
+    .desc::after {
+        content: '↑';
     }
 </style>
