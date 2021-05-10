@@ -46,6 +46,18 @@ const routes: Array<RouteRecordRaw> = [
         component: () =>
             import(/* webpackChunkName: "api" */ '../views/FireBase.vue'),
     },
+    {
+        path: '/easiest',
+        name: 'Easiest',
+        component: () =>
+            import(/* webpackChunkName: "api" */ '../views/Easiest.vue'),
+    },
+    {
+        path: '/userlist',
+        name: 'UserList',
+        component: () =>
+            import(/* webpackChunkName: "api" */ '../easiest/comp//UserList.vue'),
+    },
 ]
 
 const router = createRouter({
