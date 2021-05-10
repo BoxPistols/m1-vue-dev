@@ -9,13 +9,21 @@
 
                     <button class="btn btn-primary mb-3" @click="handleEvent">handleEvent</button>
 
+                    <!-- <button class="btn btn-primary mb-3" @click="over40">over40</button> -->
+
+                    <h2>{{ sort_key }}</h2>
+
                     <table class="table">
-                        <th>ID</th>
-                        <th>名前</th>
-                        <th>年齢</th>
-                        <th>性別</th>
-                        <th>都道府県</th>
-                        <tr v-for="customer in customers" :key="customer.id">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th @click="sortBy('id')">ID</th>
+                                <th @click="sortBy('name')">名前</th>
+                                <th @click="sortBy('age')">年齢</th>
+                                <th @click="sortBy('sex')">性別</th>
+                                <th @click="sortBy('pref')">都道府県</th>
+                            </tr>
+                        </thead>
+                        <tr v-for="customer in sort_customers" :key="customer.id">
                             <td>{{ customer.id }}</td>
                             <td>{{ customer.name }}</td>
                             <td>{{ customer.age }}</td>
@@ -66,6 +74,8 @@ export default {
     data() {
         return {
             customers: customers,
+            // for Table Sort
+            sort_key: '',
         }
     },
     methods: {
@@ -81,8 +91,37 @@ export default {
             //  Dont move ↓
             // Vue.set(this.customers, 0, { repList })
         },
+        sortBy(key) {
+            this.sort_key = key
+        },
+        // TODO: dont move = not reactive(bind)
+        // over40() {
+        //     this.customers.filter(function (e) {
+        //         return e.age >= 40
+        //     })
+        // },
     },
-    computed: {},
+    computed: {
+        // thへのsortByをSortとして機能させる
+        sort_customers() {
+            if (this.sort_key != '') {
+                this.customers.sort((a, b) => {
+                    if (a[this.sort_key] < b[this.sort_key]) return -1
+                    if (a[this.sort_key] > b[this.sort_key]) return 1
+                    return 0
+                })
+                return this.customers
+            } else {
+                return this.customers
+            }
+        },
+        // TODO: dont move = not reactive(bind)
+        over40() {
+            return this.customers.filter(function (e) {
+                return e.age >= 40
+            })
+        },
+    },
 }
 </script>
 
