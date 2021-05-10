@@ -6,6 +6,9 @@
                     <router-link to="/Easiest">Easiest Top</router-link>
                     <h2>{{ title }}</h2>
                     <p>Lorem ipsum dolor sit</p>
+
+                    <button class="btn btn-primary mb-3" @click="handleEvent">handleEvent</button>
+
                     <table class="table">
                         <th>ID</th>
                         <th>名前</th>
@@ -20,7 +23,6 @@
                             <td>{{ customer.pref }}</td>
                         </tr>
                     </table>
-                    <button class="btn btn-primary">aaa</button>
                 </div>
             </div>
         </div>
@@ -54,6 +56,7 @@ var customers = [
     { id: 22, name: '山田太郎', age: 25, sex: '男', pref: '千葉県' },
     { id: 23, name: '井上五郎', age: 42, sex: '男', pref: '長野県' },
 ]
+
 export default {
     name: 'Comp',
     props: {
@@ -66,8 +69,17 @@ export default {
         }
     },
     methods: {
-        handleEvent(x) {
-            alert(x)
+        handleEvent() {
+            const repList = {
+                id: 1,
+                name: '吉田くん',
+                age: 666,
+                sex: 'メン',
+                pref: 'ロシア',
+            }
+            this.customers[0] = repList
+            //  Dont move ↓
+            // Vue.set(this.customers, 0, { repList })
         },
     },
     computed: {},
