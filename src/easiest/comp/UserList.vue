@@ -76,6 +76,7 @@ export default {
             customers: customers,
             // for Table Sort
             sort_key: '',
+            sort_asc: true,
         }
     },
     methods: {
@@ -92,6 +93,9 @@ export default {
             // Vue.set(this.customers, 0, { repList })
         },
         sortBy(key) {
+            this.sort_key === key
+                ? (this.sort_asc = !this.sort_asc)
+                : (this.sort_asc = true)
             this.sort_key = key
         },
         // TODO: dont move = not reactive(bind)
@@ -105,9 +109,11 @@ export default {
         // thへのsortByをSortとして機能させる
         sort_customers() {
             if (this.sort_key != '') {
+                let set = 1
+                this.sort_asc ? (set = 1) : (set = -1)
                 this.customers.sort((a, b) => {
-                    if (a[this.sort_key] < b[this.sort_key]) return -1
-                    if (a[this.sort_key] > b[this.sort_key]) return 1
+                    if (a[this.sort_key] < b[this.sort_key]) return -1 * set
+                    if (a[this.sort_key] > b[this.sort_key]) return 1 * set
                     return 0
                 })
                 return this.customers
