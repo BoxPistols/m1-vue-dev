@@ -3,7 +3,20 @@
         <div class="contaier">
             <div class="row">
                 <div class="col text-left">
-                    <router-link to="/Easiest">Easiest Top</router-link>
+                    <!-- Link -->
+                    <ul>
+                        <li>
+                            <router-link to="/Easiest">Easiest Top</router-link>
+                        </li>
+                        <li>
+                            <router-link to="/userlist">userlist Top</router-link>
+                        </li>
+                        <li>
+                            <router-link to="/userlist/profile/12/千葉県">個人 詳細</router-link>
+                        </li>
+                    </ul>
+                    <router-view></router-view>
+
                     <h2>{{ title }} UserList</h2>
                     <p class="text-center">{{ sort_key }}: {{ sort_asc ? '昇順' : '降順'}}</p>
                     <table class="table">

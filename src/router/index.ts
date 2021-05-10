@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import Home from '../views/Home.vue'
 import User from '@/views/User.vue'
+import component from '../views/Home.vue'
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -56,7 +57,21 @@ const routes: Array<RouteRecordRaw> = [
         path: '/userlist',
         name: 'UserList',
         component: () =>
-            import(/* webpackChunkName: "api" */ '../easiest/comp//UserList.vue'),
+            import(/* webpackChunkName: "api" */ '../easiest/comp/UserList.vue'),
+        children: [
+            {
+                path: 'profile/:id/:pref',
+                component: () =>
+                    import(/* webpackChunkName: "api" */ '../easiest/comp/UserList-Profile.vue'),
+            }
+        ]
+    },
+    {
+        path: '/vue-component/:id/:name',
+        name: 'VueComponent',
+        component: () =>
+            import(/* webpackChunkName: "api" */ '../easiest/comp/VueComponent.vue'),
+
     },
 ]
 
