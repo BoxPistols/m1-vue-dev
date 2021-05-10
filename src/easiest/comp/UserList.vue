@@ -4,13 +4,7 @@
             <div class="row">
                 <div class="col text-left">
                     <router-link to="/Easiest">Easiest Top</router-link>
-                    <h2>{{ title }}</h2>
-                    <p>Lorem ipsum dolor sit</p>
-
-                    <button class="btn btn-primary mb-3" @click="handleEvent">handleEvent</button>
-
-                    <!-- <button class="btn btn-primary mb-3" @click="over40">over40</button> -->
-
+                    <h2>{{ title }} UserList</h2>
                     <p class="text-center">{{ sort_key }}: {{ sort_asc ? '昇順' : '降順'}}</p>
                     <table class="table">
                         <thead class="thead-dark">
@@ -79,18 +73,6 @@ export default {
         }
     },
     methods: {
-        handleEvent() {
-            // const repList = {
-            //     id: 1,
-            //     name: '吉田くん',
-            //     age: 666,
-            //     sex: 'メン',
-            //     pref: 'ロシア',
-            // }
-            // this.customers[0] = repList
-            //  Dont move ↓
-            // Vue.set(this.customers, 0, { repList })
-        },
         sortBy(key) {
             this.sort_key === key
                 ? (this.sort_asc = !this.sort_asc)
@@ -103,12 +85,6 @@ export default {
                 desc: this.sort_key === key && !this.sort_asc,
             }
         },
-        // TODO: dont move = not reactive(bind)
-        // over40() {
-        //     this.customers.filter(function (e) {
-        //         return e.age >= 40
-        //     })
-        // },
     },
     computed: {
         // thへのsortByをSortとして機能させる
@@ -125,12 +101,6 @@ export default {
             } else {
                 return this.customers
             }
-        },
-        // TODO: dont move = not reactive(bind)
-        over40() {
-            return this.customers.filter(function (e) {
-                return e.age >= 40
-            })
         },
     },
 }
